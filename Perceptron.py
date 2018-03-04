@@ -3,7 +3,7 @@
 import random
 
 
-class Perceptron:
+class Perceptron():
     """
     a class for neural network it represent each
     neuron
@@ -13,7 +13,8 @@ class Perceptron:
         """ the constructor,
         it initialize the the weights of axon randomly
         """
-        self.len = 4
+        self.len = 3
+        self.lr = 0.05
         self.weights = []
         for i in range(0, self.len):
             self.weights.append(random.uniform(-1, 1))
@@ -30,3 +31,10 @@ class Perceptron:
         for i in range(0, len(ipt)):
             sumOpt += ipt[i] * self.weights[i]
         return (self.__sign(sumOpt))
+
+    def train(self, ipt, target):
+        guess = self.guess(ipt)
+        error = target - guess
+
+        for i in range(0, len(self.weights)):
+            self.weights[i] += error * ipt[i] * self.lr

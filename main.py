@@ -2,13 +2,14 @@
 
 import os
 
-from Perceptron import *
-from Window import *
-from Training import *
+from Perceptron import Perceptron
+from Window import Window
+from Training import Point
 import time
 
 win = Window()
 points = []
+brain = Perceptron()
 
 
 def after(t, fun, *tab, **dic):
@@ -17,28 +18,53 @@ def after(t, fun, *tab, **dic):
 
 
 def show():
+    err = 0
 
-    for i in range(0, len(points)):
-        points[i].show()
+    for pts in points:
+        x = pts.x
+        y = pts.y
+        tg = pts.label
+        brain.train([x, y, 1], tg)
+        res = brain.guess([x, y])
+        if res == tg:
+            win.fill("green")
+        else:
+            err = 1
+            win.fill("red")
+        win.ellipse(x, y, 2, 2)
     win.update()
+    if err == 0:
+        print("done total node:{}".format(len(points)))
+        return
+    print("err: {} brain:".format(err), brain.weights)
     after(1, show)
 
 
 def main():
-    n = Perceptron()
-    ipt = [1, 1, 1, 1]
-
-    print(n.weights, end="\n\n")
-    print(n.guess(ipt))
+    print(brain.weights, end="\n")
     win.createCanvas(500, 500)
     win.fill("black")
     win.background("white")
     win.line(0, 0, win.width, win.height)
 
-    for i in range(0, 100):
+    for i in range(0, 10000):
         points.append(Point(win))
 
+    for pts in points:
+        x = pts.x
+        y = pts.y
+        tg = pts.label
+        res = brain.guess([x, y, 1])
+        if res == tg:
+            win.fill("green")
+        else:
+            win.fill("red")
+        win.ellipse(x, y, 2, 2)
+    win.update()
+    time.sleep(1)
     show()
+    print("we learn")
+    print(brain.weights)
     os.system("pause")
 
 

@@ -3,7 +3,7 @@
 import random
 
 
-class Point:
+class Point():
 
     def __init__(self, window):
         self.win = window
@@ -12,11 +12,11 @@ class Point:
         if self.x > self.y:
             self.label = 1
         else:
-            self.label = 0
+            self.label = -1
 
     def show(self):
         if self.label == 1:
             self.win.fill("white")
         else:
             self.win.fill("black")
-        self.win.ellipse(self.x, self.y, 8, 8)
+        self.win.ellipse(self.x, self.y, 3, 3)
