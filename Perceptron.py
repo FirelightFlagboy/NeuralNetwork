@@ -12,8 +12,8 @@ class Perceptron:
 		""" the constructor,
 		it initialize the the weights of axon randomly
 		"""
-		self.weights = []
 		self.len = 4
+		self.weights = []
 		for i in range(0, self.len):
 			self.weights.append(random.uniform(-1,1))
 
