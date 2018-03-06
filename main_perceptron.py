@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    main.py                                            :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2018/03/06 21:49:53 by fbenneto          #+#    #+#              #
+#    Updated: 2018/03/06 21:49:54 by fbenneto         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # coding:utf-8
 
 import os
@@ -10,11 +22,6 @@ import time
 win = Window()
 points = []
 brain = Perceptron()
-
-
-def after(t, fun, *tab, **dic):
-    time.sleep(t)
-    fun(*tab, *dic)
 
 
 def show():
@@ -37,7 +44,8 @@ def show():
         print("done total node:{}".format(len(points)))
         return
     print("err: {} brain:".format(err), brain.weights)
-    after(1, show)
+    time.sleep(0.5)
+    show()
 
 
 def main():
