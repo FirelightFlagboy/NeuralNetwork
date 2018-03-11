@@ -6,7 +6,7 @@
 #    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/11 20:10:50 by fbenneto          #+#    #+#              #
-#    Updated: 2018/03/11 22:02:31 by fbenneto         ###   ########.fr        #
+#    Updated: 2018/03/11 22:24:57 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,12 +60,12 @@ class MatrixTest(TestCase):
 			[39, 27, 26],
 			[24, 31, 32]
 		])
-		self.assertEqual(self.matrix_b.__add__(0).matrix,
+		self.assertEqual(self.matrix_c.__add__(0).matrix,
 		[
 			[1, 2, 3],
 			[4, 5, 6]
 		])
-		self.assertEqual(self.matrix_b.__add__(100).matrix,
+		self.assertEqual(self.matrix_d.__add__(100).matrix,
 		[
 			[101, 102],
 			[103, 104],
@@ -73,4 +73,23 @@ class MatrixTest(TestCase):
 		])
 
 	def test_matrix_add_matrix(self):
-		pass
+		self.assertEqual(self.matrix_a.__add__(self.matrix_b).matrix,
+		[
+			[7, 14, 11],
+			[25, 9, 9],
+			[8, 14, 17]
+		])
+		self.assertEqual(self.matrix_b.__add__(self.matrix_a).matrix,
+		[
+			[7, 14, 11],
+			[25, 9, 9],
+			[8, 14, 17]
+		])
+
+	def test_matrix_err_add_matrix(self):
+		nM = Matrix(1,2)
+		with self.assertRaises(TypeError):
+			self.matrix_a.__add__(nM)
+
+		with self.assertRaises(TypeError):
+			self.matrix_a.__mul__(nM)

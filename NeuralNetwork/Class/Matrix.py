@@ -17,7 +17,7 @@ class Matrix():
 
     def _mulMatrix(self, mat):
         if self.colums != mat.rows:
-            raise ValueError("error matrix size")
+            raise TypeError("error the matrix's size don't match")
 
         res = Matrix(self.rows, mat.colums)
 
@@ -25,6 +25,16 @@ class Matrix():
             for j in range(0, res.colums):
                 for k in range(0, self.colums):
                     res.matrix[i][j] += self.matrix[i][k] * mat.matrix[k][j]
+        return (res)
+
+    def _addMatrix(self, mat):
+        if self.rows != mat.rows or self.colums != mat.colums:
+            raise TypeError("error the matrix's size don't match")
+
+        res = Matrix(self.rows, self.colums)
+        for i in range(0, self.rows):
+                for y in range(0, self.colums):
+                    res.matrix[i][y] = self.matrix[i][y] + mat.matrix[i][y]
         return (res)
 
     def __init__(self, rows, colums):
@@ -44,17 +54,15 @@ class Matrix():
         return (s)
 
     def __add__(self, n):
-        res = Matrix(self.rows, self.colums)
         if type(n) is Matrix:
-            for i in range(0, self.rows):
-                for y in range(0, self.colums):
-                    res.matrix[i][y] = self.matrix[i][y] + n.matrix[i][y]
+            return (self._addMatrix(n))
         elif type(n) is int:
+            res = Matrix(self.rows, self.colums)
             for i in range(0, self.rows):
                 for y in range(0, self.colums):
                     res.matrix[i][y] = self.matrix[i][y] + n
         else:
-            raise ValueError("error 'n' is not an int or a matrix")
+            raise TypeError("error 'n' is not an int or a matrix")
         return (res)
 
     def __mul__(self, n):
@@ -66,7 +74,7 @@ class Matrix():
                 for y in range(0, self.colums):
                     res.matrix[i][y] = self.matrix[i][y] * n
         else:
-            raise ValueError("error 'n' is not an int or a matrix")
+            raise TypeError("error 'n' is not an int or a matrix")
         return (res)
 
     def randomize(self):
