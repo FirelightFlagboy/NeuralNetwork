@@ -15,7 +15,10 @@ from random import randint
 
 class Matrix():
 
-    def _mulMatrix(self, mat):
+    def __mulMatrix(self, mat):
+        """
+        multiply the two matrix and return sur result
+        """
         if self.colums != mat.rows:
             raise TypeError("error the matrix's size don't match")
 
@@ -27,7 +30,10 @@ class Matrix():
                     res.matrix[i][j] += self.matrix[i][k] * mat.matrix[k][j]
         return (res)
 
-    def _addMatrix(self, mat):
+    def __addMatrix(self, mat):
+        """
+        simply add the two matrix and return a new matrix
+        """
         if self.rows != mat.rows or self.colums != mat.colums:
             raise TypeError("error the matrix's size don't match")
 
@@ -38,6 +44,9 @@ class Matrix():
         return (res)
 
     def __init__(self, rows, colums):
+        """
+        The constructor of the matrix
+        """
         self.rows = rows
         self.colums = colums
         self.matrix = []
@@ -54,8 +63,11 @@ class Matrix():
         return (s)
 
     def __add__(self, n):
+        """
+        when the user want to add a matrix or a number
+        """
         if type(n) is Matrix:
-            return (self._addMatrix(n))
+            return (self.__addMatrix(n))
         elif type(n) is int:
             res = Matrix(self.rows, self.colums)
             for i in range(0, self.rows):
@@ -66,8 +78,11 @@ class Matrix():
         return (res)
 
     def __mul__(self, n):
+        """
+        when the user want to multiply a matrix or a scalar
+        """
         if type(n) is Matrix:
-            return (self._mulMatrix(n))
+            return (self.__mulMatrix(n))
         elif type(n) is int:
             res = Matrix(self.rows, self.colums)
             for i in range(0, self.rows):
@@ -78,11 +93,18 @@ class Matrix():
         return (res)
 
     def randomize(self):
+        """
+        randomize each node of the matrix with random value between
+        0 and 100
+        """
         for x in range(0, self.rows):
             for y in range(0, self.colums):
                 self.matrix[x][y] = randint(0, 100)
 
     def transpose(self):
+        """
+        Transpose the matrix and return a new one
+        """
         res = Matrix(self.colums, self.rows)
         for r in range(0, res.rows):
             for c in range(0, res.colums):

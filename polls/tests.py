@@ -6,7 +6,7 @@
 #    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/11 20:10:50 by fbenneto          #+#    #+#              #
-#    Updated: 2018/03/11 22:24:57 by fbenneto         ###   ########.fr        #
+#    Updated: 2018/03/11 22:33:26 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,6 +88,7 @@ class MatrixTest(TestCase):
 
 	def test_matrix_err_add_matrix(self):
 		nM = Matrix(1,2)
+
 		with self.assertRaises(TypeError):
 			self.matrix_a.__add__(nM)
 
