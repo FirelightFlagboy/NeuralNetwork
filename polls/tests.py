@@ -6,7 +6,7 @@
 #    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/11 20:10:50 by fbenneto          #+#    #+#              #
-#    Updated: 2018/03/11 20:35:45 by fbenneto         ###   ########.fr        #
+#    Updated: 2018/03/11 20:36:17 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ class MatrixTest(TestCase):
 		self.assertEqual(self.matrix_c.__str__(),
 		"[1, 2, 3]\n[4, 5, 6]\n")
 		self.assertEqual(self.matrix_d.__str__(),
-		"[1, 2]\n[3, 4]\n[5, 6]n")
+		"[1, 2]\n[3, 4]\n[5, 6]\n")
 
 	def test_matrix_add(self):
 		pass
