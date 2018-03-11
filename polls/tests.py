@@ -6,7 +6,7 @@
 #    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/11 20:10:50 by fbenneto          #+#    #+#              #
-#    Updated: 2018/03/11 22:00:03 by fbenneto         ###   ########.fr        #
+#    Updated: 2018/03/11 22:02:31 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,23 @@ class MatrixTest(TestCase):
 			[10, 13, 9],
 			[14, 10, 11],
 			[12, 11, 13]
+		])
+		self.assertEqual(self.matrix_b.__add__(23).matrix,
+		[
+			[25, 29, 30],
+			[39, 27, 26],
+			[24, 31, 32]
+		])
+		self.assertEqual(self.matrix_b.__add__(0).matrix,
+		[
+			[1, 2, 3],
+			[4, 5, 6]
+		])
+		self.assertEqual(self.matrix_b.__add__(100).matrix,
+		[
+			[101, 102],
+			[103, 104],
+			[105, 106]
 		])
 
 	def test_matrix_add_matrix(self):
