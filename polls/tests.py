@@ -6,7 +6,7 @@
 #    By: fbenneto <f.benneto@student.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/11 20:10:50 by fbenneto          #+#    #+#              #
-#    Updated: 2018/03/11 20:43:55 by fbenneto         ###   ########.fr        #
+#    Updated: 2018/03/11 20:45:12 by fbenneto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,16 +42,11 @@ class MatrixTest(TestCase):
 		]
 
 	def test_matrix_show(self):
-		self.assertEqual(self.matrix_a.__str__(),
-		"[5, 8, 4]\n[9, 5, 6]\n[7, 6, 8]\n")
-		self.assertEqual(self.matrix_b.__str__(),
-		"[2, 6, 7]\n[16, 4, 3]\n[1, 8, 9]\n")
-		self.assertEqual(self.matrix_c.__str__(),
-		"[1, 2, 3]\n[4, 5, 6]\n")
-		self.assertEqual(self.matrix_d.__str__(),
-		"[1, 2]\n[3, 4]\n[5, 6]\n")
+		self.assertEqual(self.matrix_a.__str__(), "[5, 8, 4]\n[9, 5, 6]\n[7, 6, 8]\n")
+		self.assertEqual(self.matrix_b.__str__(), "[2, 6, 7]\n[16, 4, 3]\n[1, 8, 9]\n")
+		self.assertEqual(self.matrix_c.__str__(), "[1, 2, 3]\n[4, 5, 6]\n")
+		self.assertEqual(self.matrix_d.__str__(), "[1, 2]\n[3, 4]\n[5, 6]\n")
 
 	def test_matrix_add(self):
-		self.assertEqual(self.matrix_a.__add__(5),
-		"[5, 8, 4]\n[9, 5, 6]\n[7, 6, 8]\n")
+		self.assertEqual(self.matrix_a.__add__(5), "[5, 8, 4]\n[9, 5, 6]\n[7, 6, 8]\n")
 		pass
